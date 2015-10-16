@@ -89,6 +89,18 @@ describe("basic", function(){
     })
   })
 
+  it("should return CSS SourceMap file", function(done){
+    fs.readFile(path.join(outputPath, "css", "main.css.map"), function(err, contents){
+      contents.toString().should.include("[\"_nav.less\",\"main.less\"]")
+      request('http://localhost:8100/css/main.css.map', function (e, r, b) {
+        r.statusCode.should.eql(200)
+        b.should.include("[\"_nav.less\",\"main.less\"]")
+        b.should.eql(contents.toString())
+        done()
+      })
+    })
+  })
+
   it("should return proper mime type on 404 page", function(done){
     request('http://localhost:8100/some/missing/path.css', function (e, r, b) {
       r.statusCode.should.eql(404)
