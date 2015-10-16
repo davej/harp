@@ -59,7 +59,8 @@
     "mocha": "1.21.5",
     "nixt": "0.4.1",
     "request": "2.61.0",
-    "should": "3.3.2"
+    "should": "3.3.2",
+    "sinon": "^1.17.1"
   },
   "scripts": {
     "test": "mocha --reporter spec -t 8000"
